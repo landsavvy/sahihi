@@ -17,6 +17,7 @@
 <script>
 const crypto = require("crypto");
 const fs = require("fs");
+
 const path = require("path");
 const { dialog } = require("electron").remote;
 export default {
@@ -30,6 +31,14 @@ export default {
   },
   methods: {
     async save() {
+      if (this.publicKey == "") {
+        swal({
+          title: "Alert",
+          text: `Generate keys first`,
+          icon: "warning",
+        });
+        return;
+      }
       const result = await dialog.showOpenDialog({
         properties: ["openDirectory"],
       });
@@ -37,6 +46,12 @@ export default {
 
       fs.writeFileSync(path.join(filepath, "PrivateKey.pem"), this.publicKey);
       fs.writeFileSync(path.join(filepath, "PublicKey.pem"), this.privateKey);
+      swal({
+        title: "Saved Keys",
+        text: `Saved to : ${filepath}`,
+        icon: "success",
+        button: "Dismiss",
+      });
       console.log(filepath);
     },
     async generate() {
