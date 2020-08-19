@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "gsans";
+  src: url("/fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: "gsanslight";
+  src: url("/fonts/Open_Sans/OpenSans-Light.ttf");
+}
+@font-face {
+  font-family: "gsansbold";
+  src: url("/fonts/Open_Sans/OpenSans-Bold.ttf");
+}
+@font-face {
+  font-family: "gsansextrabold";
+  src: url("/fonts/Open_Sans/OpenSans-ExtraBold.ttf");
+}
+body {
+  font-family: "gsans";
+}

@@ -1,0 +1,91 @@
+/* empty photo */
+.empty-photo-profile {
+  height: 4.2em;
+  width: 4.2em;
+}
+.empty-photo-search {
+  height: 3.2em;
+  width: 3.2em;
+}
+.empty-photo-new {
+  height: 3em;
+}
+.empty-photo-comment {
+  height: 2em;
+}
+.input-line {
+  border: none;
+  border-bottom: solid 1px;
+  border-radius: 0;
+}
+.input-line:focus {
+  box-shadow: none;
+
+  border-bottom-width: 2px;
+  border-color: #1aa0b0;
+}
+.ios .single-preview {
+  border: white 0.5em solid;
+}
+
+/* post box */
+.post-cont {
+  border-radius: 2.5em;
+  border: solid #e2e2e2 1px;
+}
+.post-dots {
+  fill: black;
+  font-size: 0.8em;
+}
+.post-by-anon {
+}
+.post-owner {
+  font-weight: bold;
+  font-size: 1em;
+  align-self: center;
+}
+.comment-owner {
+  font-weight: bold;
+  font-size: 1em;
+  align-self: center;
+}
+.post-content {
+  border-bottom: solid black 1px;
+  margin-bottom: 0.5em;
+}
+.anon-text {
+  vertical-align: super;
+}
+.likes-count {
+  font-weight: bold;
+}
+.reaction-btn {
+  display: inline;
+  margin: 1em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+.pop-action {
+  padding: 1em;
+  border-bottom: solid silver 1px;
+}
+/* comment box */
+.comment-text {
+  line-break: auto;
+  max-width: 70vw;
+  white-space: pre-line;
+}
+.f-8 {
+  font-size: 0.85em;
+}
+.anon-svg-comment {
+  font-size: 1.2em;
+  padding: 0.1em;
+}
+.comment-cont {
+  /* font-size: 0.85em; */
+}
+.username-highlight {
+  font-size: 1.2em;
+  color: #6d6d6d;
+}
