@@ -13,15 +13,25 @@
           class="list-group-item list-group-item-action"
         >Keygen</router-link>
         <router-link
-          :class="{active: isOn('public')}"
-          to="/public"
+          :class="{active: isOn('changeKey')}"
+          to="/changeKey"
           class="list-group-item list-group-item-action"
         >Change Public Key</router-link>
         <router-link
-          :class="{active: isOn('witness')}"
-          to="/witness"
+          :class="{active: isOn('changeWitness')}"
+          :to="{name:'changeWitness'}"
           class="list-group-item list-group-item-action"
         >Change Witness</router-link>
+        <router-link
+          :class="{active: isOn('titleSubdivision')}"
+          :to="{name:'titleSubdivision'}"
+          class="list-group-item list-group-item-action"
+        >Title Subdivision</router-link>
+        <router-link
+          :class="{active: isOn('titleTransfer')}"
+          :to="{name:'titleTransfer'}"
+          class="list-group-item list-group-item-action"
+        >Title Transfer</router-link>
       </div>
     </div>
     <router-view></router-view>
@@ -50,6 +60,7 @@ export default {
   top: 0;
 }
 .menu-list {
+  margin: 1em;
   align-self: center;
 }
 #app {

@@ -44,8 +44,8 @@ export default {
       });
       var filepath = result.filePaths[0];
 
-      fs.writeFileSync(path.join(filepath, "PrivateKey.pem"), this.publicKey);
-      fs.writeFileSync(path.join(filepath, "PublicKey.pem"), this.privateKey);
+      fs.writeFileSync(path.join(filepath, "PrivateKey.pem"), this.privateKey);
+      fs.writeFileSync(path.join(filepath, "PublicKey.pem"), this.publicKey);
       swal({
         title: "Saved Keys",
         text: `Saved to : ${filepath}`,
