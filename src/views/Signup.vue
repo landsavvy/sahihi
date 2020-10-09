@@ -3,7 +3,7 @@
     <form class="col-12" action>
       <div class="mx-auto logo">Logo</div>
       <div class="text-danger">
-        <p v-for="error in errors">{{translate(error)}}</p>
+        <p v-for="error in errors">{{ translate(error) }}</p>
       </div>
       <div class="text-center text-primary">
         <p>Sign Up</p>
@@ -33,13 +33,17 @@
         <a href="https://nani.chat/web/forgot">Forgot Password</a>
       </small>
       <div class="mt-5">
-        <div @click="goToLogin" class="d-inline m-2 help-text">Have an Account? Login</div>
+        <div @click="goToLogin" class="d-inline m-2 help-text">
+          Have an Account? Login
+        </div>
         <button
           v-if="!loading"
           type="button"
           @click="signUp"
           class="float-right btn btn-outline-dark"
-        >Next</button>
+        >
+          Next
+        </button>
         <div v-if="loading" class="float-right loading-btn">Loading</div>
       </div>
     </form>
@@ -54,7 +58,7 @@ export default {
       username: "",
       loading: false,
       password: "",
-      errors: []
+      errors: [],
     };
   },
   methods: {
@@ -68,7 +72,7 @@ export default {
       try {
         var response = await this.$axios.post(config.url.user.signup, {
           username: this.username,
-          password: this.password
+          password: this.password,
         });
       } catch (ex) {
         console.error(ex);
@@ -87,11 +91,14 @@ export default {
       if (state.authToken && state.authToken != "") {
         //save token =
         await local.saveToken(state.authToken);
-        return this.$router.push({ name: "home" });
+        if (state.user.role == "admin") {
+          return this.$router.push({ name: "adminHome" });
+        }
+        return this.$router.push({ name: "userHome" });
       }
       this.loading = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
