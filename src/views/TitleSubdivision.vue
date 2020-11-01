@@ -6,9 +6,9 @@
       </div>
       <div class="card-body">
         <div class="form-group">
-          <label for>Parent Title Number</label>
+          <label for>Title Number</label>
           <input
-            v-model="parentTitleNum"
+            v-model="titleNum"
             type="text"
             name
             id
@@ -16,6 +16,22 @@
             placeholder
             aria-describedby="helpId"
           />
+          <small>Title Number of land to be subdivided</small>
+        </div>
+        <div class="form-group">
+          <label for>Owner ID :</label>
+          <input
+            v-model="ownerId"
+            type="text"
+            name
+            id
+            class="form-control"
+            placeholder
+            aria-describedby="helpId"
+          />
+          <small id="helpId" class="text-muted"
+            >Owner ID, of the person owning the title</small
+          >
         </div>
         <div class="form-group">
           <div for="subdivisions">Subdivisions Coordinates</div>
@@ -39,7 +55,9 @@
           <label class="custom-file-label" for="customFile">Choose file</label>
           <small id="helpId" class="text-muted">Owner Private Key</small>
         </div>
-        <button @click="sign" class="float-right mt-4 btn btn-success">Sign</button>
+        <button @click="sign" class="float-right mt-4 btn btn-success">
+          Sign
+        </button>
       </div>
     </div>
     <!-- signature card -->
@@ -48,11 +66,17 @@
         <h6 class="m-0 font-weight-bold text-primary">Signature</h6>
       </div>
       <div class="card-body">
-        <div
-          class="help"
-        >Export the digital signature and send it to Karani offices. Signature expires in 14days</div>
-        <div class="signature">{{finalFile.signature}}</div>
-        <button @click="exportSignature" class="float-right mt-4 btn btn-danger">Export</button>
+        <div class="help">
+          Export the digital signature and send it to Karani offices. Signature
+          expires in 14days
+        </div>
+        <div class="signature">{{ finalFile.signature }}</div>
+        <button
+          @click="exportSignature"
+          class="float-right mt-4 btn btn-danger"
+        >
+          Export
+        </button>
       </div>
     </div>
     <!-- map card -->
@@ -76,8 +100,8 @@ export default {
   data() {
     return {
       signed: false,
-
-      parentTitleNum: "",
+      ownerId: "",
+      titleNum: "",
       mapPolygons: [],
       subCoords: "",
       finalFile: {},
@@ -200,7 +224,8 @@ export default {
       console.log(this.privateKey);
       var signer = crypto.createSign("RSA-SHA256");
       var data = {
-        parentTitleNum: this.parentTitleNum,
+        ownerId: this.ownerId,
+        titleNum: this.titleNum,
         timestamp: Date.now(),
         subCoords: this.subCoords,
       };

@@ -2,13 +2,23 @@ var port = 80
 var production = 0
 var hoster = "http://localhost:" + port
 var socketHoster = "http://localhost:" + port
-// var hoster = "http://192.168.43.170:" + port
+var peerHoster = "http://localhost:1201"
 // var socketHoster = "http://192.168.43.170:" + port
 if (production) {
   hoster = "https://api.nani.chat"
   socketHoster = "https://api.nani.chat"
 }
 var config = {
+  peer: {
+    title: {
+      exists: peerHoster + "/api/v1/title/exists",
+      search: peerHoster + "/api/v1/title/search",
+      getTitle: peerHoster + "/api/v1/title/getTitle",
+    },
+    block: {
+      search: peerHoster + "/api/v1/block/search",
+    }
+  },
   url: {
     user: {
       login: hoster + "/api/v1/user/login",
@@ -18,7 +28,7 @@ var config = {
       add: hoster + "/api/v1/witness/add"
     },
     peer: {
-      add: hoster + "/api/v1/peer/add"
+      add: hoster + "/api/v1/peer/add",
     },
     owner: {
       add: hoster + "/api/v1/owner/add"

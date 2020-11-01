@@ -8,6 +8,7 @@ import ChangeWitness from './views/ChangeWitness'
 import ChangeKey from './views/ChangeKey'
 import TitleTransfer from './views/TitleTransfer'
 import TitleSubdivision from './views/TitleSubdivision'
+import BlockChecker from './views/BlockChecker'
 
 
 Vue.use(Router)
@@ -40,6 +41,11 @@ export default new Router({
       path: "/titleSubdivision",
       name: "titleSubdivision",
       component: TitleSubdivision
+    },
+    {
+      path: "/blockChecker",
+      name: "blockChecker",
+      component: BlockChecker
     },
     {
       path: "/titleTransfer",
