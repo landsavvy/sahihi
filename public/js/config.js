@@ -17,6 +17,7 @@ var config = {
     },
     block: {
       search: peerHoster + "/api/v1/block/search",
+      lastBlock: peerHoster + "/api/v1/block/lastBlock",
     },
     peer: {
       getAll: peerHoster + "/api/v1/peer/getAll",

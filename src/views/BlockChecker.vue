@@ -34,6 +34,9 @@
         <!-- //browse buttons -->
         <div class="buttons m-3">
           <div class="btn btn-dark" @click="prev">Previous Block</div>
+          <div class="btn btn-danger float-right mx-3" @click="last">
+            Last Block
+          </div>
           <div class="btn btn-primary float-right" @click="next">
             Next Block
           </div>
@@ -236,7 +239,6 @@ wk8HzBpGMipclNOY6BNNID1nPQkeNbIBuGGwDatAZrmOudJzIFLnoIhSgu5bg3yS
         txTime: this.block.txTime,
         data: editedData,
         gokSign: this.block.gokSign,
-
         peerSignatures: this.block.peerSignatures,
       };
 
@@ -264,8 +266,20 @@ wk8HzBpGMipclNOY6BNNID1nPQkeNbIBuGGwDatAZrmOudJzIFLnoIhSgu5bg3yS
         this.errors = ["Block not found"];
       }
     },
-
+    async last() {
+      this.errors = [];
+      var response = await this.$axios.post(config.peer.block.lastBlock, {
+        query: this.block.blockNum - 1,
+      });
+      let errors = response.data.errors;
+      if (errors.length == 0) {
+        this.block = response.data.block;
+      } else {
+        this.errors = ["Block not found"];
+      }
+    },
     async next() {
+      this.errors = [];
       this.verification.done = false;
       var response = await this.$axios.post(config.peer.block.search, {
         query: this.block.blockNum + 1,
@@ -278,6 +292,7 @@ wk8HzBpGMipclNOY6BNNID1nPQkeNbIBuGGwDatAZrmOudJzIFLnoIhSgu5bg3yS
       }
     },
     async prev() {
+      this.errors = [];
       this.verification.done = false;
       var response = await this.$axios.post(config.peer.block.search, {
         query: this.block.blockNum - 1,
