@@ -5,6 +5,7 @@ import local from "./store/local"
 import axios from "axios"
 
 import swal from 'sweetalert';
+// window.$ = window.jQuery = require("jquery");
 window.axios = axios
 window.swal = swal
 Vue.prototype.$axios = axios

@@ -1,12 +1,13 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "Sahihi",
+  "version": "1.0.0",
+  "author": "Land Savvy",
+  "description": "Sahihi app allows you to digitally sign documents required for land registry procedures. This software enables you to have a self-sovereign identity. This software should be only downloaded from a trusted source. Advanced users are encouraged to look at its code, to ensure no malicious code was added.",
   "private": true,
   "scripts": {
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service electron:build",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service electron:serve",
-    "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"

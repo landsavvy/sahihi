@@ -44,6 +44,9 @@
           class="list-group-item list-group-item-action"
           >Block Checker</router-link
         >
+        <div @click="openHelp" class="list-group-item list-group-item-action">
+          Help
+        </div>
       </div>
     </div>
     <router-view></router-view>
@@ -51,11 +54,15 @@
 </template>
 
 <script>
+import { shell } from "electron";
 export default {
   name: "App",
   methods: {
     isOn(page) {
       return this.$route.name == page;
+    },
+    openHelp() {
+      shell.openExternal("http://localhost:8080/help/user");
     },
   },
   mounted() {
