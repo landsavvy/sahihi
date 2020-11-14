@@ -14,3 +14,8 @@ Sahihi app allows you to digitally sign documents required for land registry pro
 ## Downloads
 
 See the release below.
+[Downloads/Releases](https://github.com/landsavvy/sahihi/releases).
+
+## Security and Authenticity
+
+Users and security researchers are encouraged to recompile their version of Sahihi, and verify that all code is valid and no malicious edits have been committed.
