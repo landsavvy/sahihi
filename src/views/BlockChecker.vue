@@ -6,6 +6,17 @@
         <h6 class="m-0 font-weight-bold text-primary">Search for Block</h6>
       </div>
       <div class="card-body">
+        <!-- peer id -->
+        <div class="input-group my-4">
+          <input
+            type="text"
+            class="form-control bg-light border-0 small"
+            placeholder="Peer Address"
+            v-model="config.peerHoster"
+            aria-label="Peer Address"
+          />
+        </div>
+        <!-- search -->
         <div class="input-group">
           <input
             type="text"
@@ -22,7 +33,7 @@
             </button>
           </div>
         </div>
-        <div v-for="error in errors" class="text-danger">{{ error }}</div>
+        <div v-for="error in errors" class="text-danger m-2">{{ error }}</div>
       </div>
     </div>
     <!-- block card -->
@@ -94,6 +105,17 @@
             </div>
           </div>
         </div>
+        <div class="info m-5" v-if="verification.done">
+          <b>Hash Verification</b> : Checks that information on the block data
+          displayed above has not been tampered and confirms the hash. <br />
+          <b>GOK Verification</b> : Checks that the information was only
+          submitted by the GOK master peer to the block chain, and not any other
+          peer.
+          <br />
+          <b>Peer Verificaiton</b> : Checks that all rules regarding a
+          particular transaction (Land Transfers, Subdivisions etc) , have been
+          checked and confirmed by peers/nodes on the block chain.
+        </div>
       </div>
     </div>
     <!-- data block -->
@@ -132,6 +154,7 @@ export default {
       status: "",
       query: "",
       block: null,
+      config: config,
       verification: {
         hash: null,
         gok: null,
@@ -167,7 +190,6 @@ export default {
       this.verifyPeers();
     },
     async verifyPeers() {
-      let verify = crypto.createVerify("RSA-SHA256");
       let peerSignatures = this.block.peerSignatures;
       //get all peer public keys
       var response = await this.$axios.post(config.peer.peer.getAll, {});
@@ -176,6 +198,7 @@ export default {
       var peerVerifications = [];
       //loop peer signatures
       peerSignatures.forEach((s) => {
+        let verify = crypto.createVerify("RSA-SHA256");
         //get peer
         let peer = peers.filter((p) => p.peerId == s.peerId)[0];
         //chech peer signature

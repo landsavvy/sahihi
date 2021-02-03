@@ -2,25 +2,26 @@ var port = 80
 var production = 0
 var hoster = "http://localhost:" + port
 var socketHoster = "http://localhost:" + port
-var peerHoster = "http://localhost:1201"
+var peerHoster = "http://localhost:5001"
 // var socketHoster = "http://192.168.43.170:" + port
 if (production) {
   hoster = "https://api.nani.chat"
   socketHoster = "https://api.nani.chat"
 }
 var config = {
+  peerHoster: "http://localhost:5001",
   peer: {
     title: {
-      exists: peerHoster + "/api/v1/title/exists",
-      search: peerHoster + "/api/v1/title/search",
-      getTitle: peerHoster + "/api/v1/title/getTitle",
+      get exists() { return config.peerHoster + "/api/v1/title/exists" },
+      get search() { return config.peerHoster + "/api/v1/title/search" },
+      get getTitle() { return config.peerHoster + "/api/v1/title/getTitle" },
     },
     block: {
-      search: peerHoster + "/api/v1/block/search",
-      lastBlock: peerHoster + "/api/v1/block/lastBlock",
+      get search() { return config.peerHoster + "/api/v1/block/search" },
+      get lastBlock() { return config.peerHoster + "/api/v1/block/lastBlock" },
     },
     peer: {
-      getAll: peerHoster + "/api/v1/peer/getAll",
+      get getAll() { return config.peerHoster + "/api/v1/peer/getAll" },
     }
   },
   url: {
